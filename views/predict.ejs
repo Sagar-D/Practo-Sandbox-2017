@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>  
+<script>
+    var months = ["December","January","February","March","April","May","June","July","August","September","October","November"];
+window.onload = function () {
+
+    var xpointsstr = document.getElementById("xpoints").innerText;
+    var ypointsstr = document.getElementById("ypoints").innerText;
+
+    var xpoints = xpointsstr.split(" ");
+    var ypoints = ypointsstr.split(" ");
+
+    var dps = [];
+    for (var i = 0; i <=xpoints.length - 1; i++) {
+        //alert(obj.label +" "+ obj.y);
+        var month = parseInt(xpoints[i])%12;
+        console.log(month)
+        var obj = {
+            y: parseInt(ypoints[i]),
+            label : months[month]
+        };
+        dps.push(obj);
+    }
+    console.log(dps);
+
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    theme: "light2",
+    title:{
+        text: "Prediction"
+    },
+    axisY: {
+        title: "Pred"
+    },
+    data: [{        
+        type: "column",  
+        showInLegend: true, 
+        legendMarkerColor: "grey",
+        legendText: "",
+        dataPoints: dps
+    }]
+});
+chart.render();
+}
+</script>
+</head>
+<body>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<style>
+
+div.logo{
+background:#352960;
+height:100%;
+width: 100%;
+margin : 0;
+padding: 25px;
+}
+ul.mylist{
+  background-color:#352960;
+  color: white;
+  margin-top: 1px;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    margin-left: 0;
+    margin-right: 0;
+    text-align:right;
+    color:#FFFFFF;
+}
+
+footer{
+    color: #BF360C;
+    margin: 2em;
+    position:fixed;
+    bottom:0px;
+
+}
+
+ul li.my{
+  background-color: #352960;
+  display: inline-block;
+  padding: 15px;
+  font-family:comic sans ms;  
+  color: #ffffff;
+}
+
+ul a{
+  text-decoration: none;
+  color: #ffffff;
+}
+ul a:hover{
+  color: #352940;
+}
+body {
+  background: #ffffff;   
+}
+
+
+</style>
+
+
+</head>
+<body>
+  
+
+</style>
+
+<div class="logo">
+    <h1>Enabling Partners</h1>
+</div>
+
+<nav>
+<ul class="mylist">
+<li class="my"><b>Market Analysis</b></li>
+<a href='events'><li class="my" style="float:right";>Events</li></a>
+<a href='/'><li class="my" style="float:right";>Market Analysis</li></a>
+</ul>
+</nav>
+
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<h1 id="xpoints" style="color: #ffffff"  ><%=xp%></h1>
+<h1 id="ypoints" style="color:#ffffff" ><%=yp%></h1>
+</body>
+</html>

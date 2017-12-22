@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Custom <select></title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+  
+
+<script>
+window.onload = function () {
+
+    var xpointsstr = document.getElementById("xpoints").innerText;
+    var ypointsstr = document.getElementById("ypoints").innerText;
+
+    var xpoints = xpointsstr.split(" ");
+    var ypoints = ypointsstr.split(" ");
+
+    var dps = [];
+    for (var i = 0; i <=xpoints.length - 1; i++) {
+        //alert(obj.label +" "+ obj.y);
+        
+        var obj = {
+            y: parseInt(ypoints[i]),
+            label : xpoints[i]
+        };
+        dps.push(obj);
+    }
+    console.log(dps);
+
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    theme: "light2",
+    title:{
+        text: "Prediction"
+    },
+    axisY: {
+        title: "Percentage"
+    },
+    data: [{        
+        type: "column",  
+        showInLegend: true, 
+        legendMarkerColor: "grey",
+        legendText: "",
+        dataPoints: dps
+    }]
+});
+chart.render();
+}
+</script>
+<style>
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+</head>
+<body>
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<style>
+
+div.logo{
+background:#352960;
+height:100%;
+width: 100%;
+margin : 0;
+padding: 25px;
+}
+ul.mylist{
+  background-color:#352960;
+  color: white;
+  margin-top: 1px;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    margin-left: 0;
+    margin-right: 0;
+    text-align:right;
+    color:#FFFFFF;
+}
+
+footer{
+    color: #BF360C;
+    margin: 2em;
+    position:fixed;
+    bottom:0px;
+
+}
+
+ul li.my{
+  background-color: #352960;
+  display: inline-block;
+  padding: 15px;
+  font-family:comic sans ms;  
+  color: #ffffff;
+}
+
+ul a{
+  text-decoration: none;
+  color: #ffffff;
+}
+ul a:hover{
+  color: #352940;
+}
+body {
+  background: #ffffff;   
+}
+
+
+</style>
+
+
+</head>
+<body>
+  
+
+</style>
+
+<div class="logo">
+    <h1>Enabling Partners</h1>
+</div>
+
+<nav>
+<ul class="mylist">
+<li class="my"><b>Market Analysis</b></li>
+<a href='events'><li class="my" style="float:right";>Events</li></a>
+<a href='/'><li class="my" style="float:right";>Market Analysis</li></a>
+</ul>
+</nav>
+
+  
+<h3>Event Registration</h3>
+<div>
+  <form action="/saveEvent" method ="POST">
+    <label for="ename">Event Name</label>
+    <input type="text" id="ename" name="name" placeholder="Event name..">
+    
+     <label for="date">Date</label>
+    <input type="text" id="date" name="date" placeholder="Date..">
+    <label for="venue">Venue</label>
+    <input type="text" id="venue" name="loc" placeholder="Venue..">
+    <label for="des">Description</label>
+    <input type="text" id="des" name="des" placeholder="Describe..">
+  
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<%
+if(values != null && labels!= null){
+%>
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<h1 id="xpoints" style="color: #ffffff"  ><%=labels%></h1>
+<h1 id="ypoints" style="color:#ffffff" ><%=values%></h1>
+<%
+}
+%>
+
+
+</body>
+</html>

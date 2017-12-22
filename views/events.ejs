@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+
+      function seturl(){
+
+        var e = document.getElementById("ddlViewBy");
+        var path = e.options[e.selectedIndex].value;
+alert("/addEvent/"+path);
+        var a = document.getElementById('url').setAttribute("href","/addEvent/"+path);
+      }
+
+    </script>
+  </head>
+  <style>
+  
+  .card{
+    
+    transition: 0.1s;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 #545454;
+    cursor:pointer;
+  }
+
+
+</style>
+<body>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<style>
+
+div.logo{
+background:#352960;
+height:100%;
+width: 100%;
+margin : 0;
+padding: 25px;
+}
+ul.mylist{
+  background-color:#352960;
+  color: white;
+  margin-top: 1px;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    margin-left: 0;
+    margin-right: 0;
+    text-align:right;
+    color:#FFFFFF;
+}
+
+footer{
+    color: #BF360C;
+    margin: 2em;
+    position:fixed;
+    bottom:0px;
+
+}
+
+ul li.my{
+  background-color: #352960;
+  display: inline-block;
+  padding: 15px;
+  font-family:comic sans ms;  
+  color: #ffffff;
+}
+
+ul a{
+  text-decoration: none;
+  color: #ffffff;
+}
+ul a:hover{
+  color: #352940;
+}
+body {
+  background: #ffffff;   
+}
+
+
+</style>
+
+
+</head>
+<body>
+  
+
+</style>
+
+<div class="logo">
+    <h1>Enabling Partners</h1>
+</div>
+
+<nav>
+<ul class="mylist">
+<li class="my"><b>Market Analysis</b></li>
+<a href='events'><li class="my" style="float:right";>Events</li></a>
+<a href='/'><li class="my" style="float:right";>Market Analysis</li></a>
+</ul>
+</nav>
+
+<br>
+<br>
+    <div class="container">   
+      <form action="/addEvent" method="post" name="f1">
+      <p style="float:right">Add Event
+        <select name="category" id="c">
+          <option value="">Others</option>
+          <%
+          for(var i=0;i<categories.length;i++){
+          %>
+          <option value="<%=i+1;%>"><%=categories[i].category%></option>
+          <%
+        }
+        %>
+        </select>
+        
+        <input type="submit" value="Create Event" />
+      </p>
+    </form>
+     
+    </div>
+
+<%
+for(var i=0;i<events.length;i++){
+%>
+
+
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4" align="center" >
+  
+<div class="w3-container" >
+  <div class="w3-card-4" >
+    <div class="card" style="margin:0px; margin-bottom: 50px;  padding: 0px; ">
+    <img src="https://blog.practo.com/wp-content/uploads/2017/12/hackathon_facebook-994x460.png" alt="Practo Sandbox Hackathon" style="width:100%">
+    <div class="w3-container w3-center">
+     <br><strong><%=events[i].name %></strong>
+        <br><%=events[i].date %>
+        <br><%=events[i].loc %><br>
+        
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<%
+}
+%>
+</body>
+</html>

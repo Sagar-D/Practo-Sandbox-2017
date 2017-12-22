@@ -1,0 +1,45 @@
+create table tab1(
+order_id varchar(500),
+drug_name varchar(500),
+type varchar(500),
+drug_id varchar(500),
+mrp float,
+quantity int,
+created_at varchar(300),
+date varchar(200),
+month varchar(200),
+presc int,
+city varchar(300)
+);
+
+select * from ( select drug_id, count(drug_id) as tmpcount from tab1 group by drug_id) as tmp where tmpcount > 100;
+select * from ( select drug_id, sum(quantity * mrp) as tmpcount from tab1 where month like 'December' group by drug_id) as tmp order by tmpcount desc limit 0, 25;
+
+
+
+create table events(
+id int not null primary key auto_increment,
+name varchar(20),
+des varchar(100),
+date varchar(20),
+loc varchar(20),
+tag varchar(20),
+votes int not null default 0
+);
+
+create table stats(
+id int not null primary key auto_increment,
+category varchar(100),
+kannur float,
+wayanad float,
+kozhikode float,
+malappura float,
+palakkad float,
+thrissur float,
+ernakulam float,
+idukki float,
+kottayam float,
+pathanam float,
+kollam float,
+thiruvananthapuram float
+);

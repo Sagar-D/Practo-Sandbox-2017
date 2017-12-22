@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Practo-Hack</title>
+<script>
+window.onload = function() {
+
+  var labelstr = document.getElementById("labels").innerText;
+    var valuestr = document.getElementById("values").innerText;
+
+    var labels = labelstr.split(" ");
+    var values = valuestr.split(" ");
+
+    var dps = [];
+    for (var i = 0; i <labels.length - 1; i++) {
+        
+        var obj = {
+            y: parseInt(values[i]),
+            label : labels[i]
+        };
+        dps.push(obj);
+    }
+    console.log(dps);
+
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    title: {
+        text: "Best Seller - December"
+    },
+    data: [{
+        type: "pie",
+        startAngle: 240,
+        yValueFormatString: "##",
+        indexLabel: "{label}",
+        dataPoints: dps
+    }]
+});
+chart.render();
+}
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<style>
+
+div.logo{
+background:#352960;
+height:100%;
+width: 100%;
+margin : 0;
+padding: 25px;
+}
+ul.mylist{
+  background-color:#352960;
+  color: white;
+  margin-top: 1px;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    margin-left: 0;
+    margin-right: 0;
+    text-align:right;
+    color:#FFFFFF;
+}
+
+footer{
+    color: #BF360C;
+    margin: 2em;
+    position:fixed;
+    bottom:0px;
+
+}
+
+ul li.my{
+  background-color: #352960;
+  display: inline-block;
+  padding: 15px;
+  font-family:comic sans ms;  
+  color: #ffffff;
+}
+
+ul a{
+  text-decoration: none;
+  color: #ffffff;
+}
+ul a:hover{
+  color: #352940;
+}
+body {
+  background: #ffffff;   
+}
+
+
+</style>
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+
+
+<script>
+    var app = angular.module("app", []);
+    app.controller("ChangeController", function ($scope) {
+
+        $scope.CheckBoxChanged = function () {
+            $scope.CheckBoxStatus = $scope.chkValue;
+        };
+
+        $scope.TextBoxChanged = function () {
+            $scope.TextBoxStatus = $scope.txtValue;
+        };
+
+        $scope.DropDownChnaged = function () {
+            $scope.DropDownStatus = $scope.dropValue;
+        };
+
+    });
+</script>
+
+</head>
+<body>
+  
+
+</style>
+
+<div class="logo">
+    <h1>Enabling Partners</h1>
+</div>
+
+<nav>
+<ul class="mylist">
+<li class="my"><b>Market Analysis</b></li>
+<a href='events'><li class="my" style="float:right";>Events</li></a>
+<a href='#'><li class="my" style="float:right";>Market Analysis</li></a>
+</ul>
+</nav>
+<br/>
+<div align="center">
+  <form action="predict" method="POST">
+  <select class ="dropdown-header" name="drug_id" style="margin:15px;width: 250px" >
+    <%
+    for(var i = 0;i<druglist.length;i++){
+    %>
+    <option value="<%=druglist[i].drug_id%>"><%=druglist[i].drug_id%></option>
+  
+    <%
+  }
+  %>
+  </select>
+
+<br/>
+  <input class="btn btn-primary dropdown-toggle" type="submit" name="submit" value="Predict Market"/>
+</form>
+</div>
+<br/><br/><br/><br/><hr/>
+
+  <h1 id="labels" style="display:none" ><%=labellist%></h1>
+  <h1 id="values" style="display:none" ><%=valuelist%></h1>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<br/><br/>
+<hr/>
+
+<h2 align="center" style="color:#000000">Drug Store </h2>
+<hr/>
+<br/>
+<select style="align:center;">
+   <option value="Select">Select Medicine</option>
+  <option value="Dolo">Dolo</option>
+  <option value="crocin">crocin</option>
+  <option value="coldact">coldact</option>
+  <option value="benadryl">benadryl</option>
+</select> 
+<br>
+<br>
+<table>
+  <tr>
+    <th>Pharmacy Id</th>
+    <th>Pharmacy name</th>
+    <th>Quantity</th>
+  </tr>
+  <%
+  for(var i=0;i<pharma.length;i++){
+  %>
+  <tr>
+    <td><%=pharma[i].pharmaId%></td>
+    <td><%=pharma[i].Pharmaname%></td>
+    <td><%=pharma[i].Dolo650%></td>
+  </tr>
+  <%
+}
+%>
+</table>
+
+
+</body>
+</html>
